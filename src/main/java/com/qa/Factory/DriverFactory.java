@@ -19,12 +19,13 @@ public class DriverFactory {
 	
 	public WebDriver initDriver() {
 		
-		// this line is same as driver = new ChromeDriver 
-		WebDriverManager.chromedriver().setup();
-		tldriver.set(new ChromeDriver());
+			// this line is same as driver = new ChromeDriver 
+			WebDriverManager.chromedriver().setup();
+			tldriver.set(new ChromeDriver());
+			
+			getDriver().manage().deleteAllCookies();
+			getDriver().manage().window().maximize();
 		
-		getDriver().manage().deleteAllCookies();
-		getDriver().manage().window().maximize();
 		
 		return getDriver();
 	}
