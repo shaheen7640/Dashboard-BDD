@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="src/test/resources/fetureFiles",
+@CucumberOptions(features="src/test/resources/fetureFiles/changePassword.feature",
 glue = {"stepDefinitions","appHooks"},monochrome= true,
 plugin = {"pretty"},publish = true)
 
