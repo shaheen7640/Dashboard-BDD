@@ -1,5 +1,6 @@
 package com.qa.Factory;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -7,7 +8,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * @author Shaheen Akhtar
- *This class is responsible to launches the chrome browser.
+ *This class is responsible to launches the Chrome browser.
  */
 
 public class DriverFactory {

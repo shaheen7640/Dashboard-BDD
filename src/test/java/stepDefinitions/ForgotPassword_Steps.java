@@ -2,6 +2,7 @@ package stepDefinitions;
 
 
 import java.time.Duration;
+import java.util.Properties;
 
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
@@ -9,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.dashboard.util.Configuration_Reader;
 import com.pages.ForgotPassword;
 import com.qa.Factory.DriverFactory;
 
@@ -19,11 +21,24 @@ import io.cucumber.java.en.When;
 public class ForgotPassword_Steps {
 
 	private ForgotPassword forgotPassWord = new ForgotPassword(DriverFactory.getDriver());
+	private Configuration_Reader reader;
+	Properties prop;
 
 	@Given("User login page")
 	public void user_login_page() {
 
-		DriverFactory.getDriver().get("http://192.168.0.27:5000/");
+		reader = new Configuration_Reader();
+		prop = reader.init_Property();
+		
+		try {
+			DriverFactory.getDriver().get(prop.getProperty("url"));
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			System.out.println("---------------------------------------------------------------------------------------------------");
+			System.out.println("-/-Make sure you are connected with vpn/Site is down or change the driver manager version in POM-/-");
+			System.out.println("---------------------------------------------------------------------------------------------------");
+		}
 
 	}
 
@@ -37,7 +52,7 @@ public class ForgotPassword_Steps {
 	@Then("User should be prompted to a forgot your password popup")
 	public void user_should_be_prompted_to_a_forgot_your_password_popup() {
 
-		Assert.assertTrue(DriverFactory.getDriver().findElement(By.xpath("//div[@class='modal-content']")).isDisplayed());
+		Assert.assertTrue(DriverFactory.getDriver().findElement(By.xpath(prop.getProperty("ForgotPasswardPopup"))).isDisplayed());
 		System.out.println("Popup displayed");
 
 	}

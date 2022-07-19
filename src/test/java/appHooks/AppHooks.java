@@ -1,6 +1,7 @@
 package appHooks;
 
 
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +17,7 @@ public class AppHooks {
 
 	private static DriverFactory driverFactory;
 	private static WebDriver driver=null;
-
-
+	
 	@BeforeAll
 	public static void launchBrowser() {
 

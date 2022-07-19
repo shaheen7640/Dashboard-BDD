@@ -1,6 +1,6 @@
 
 Feature: Change Password
- 
+ @ignore
   Scenario Outline: Change your password
     Given User is on home page "<email>" and "<password>"
     When User clicks on my profile menu
@@ -11,5 +11,5 @@ Feature: Change Password
    
     Examples: 
       |email|               password| old password  | new password | confirm password  |
-      |dashboard@aimbeyond.com|12345| 12345       |     123456  | 123456          |
+      |dashboard@aimbeyond.com|123456| 123456       |     12345  | 12345          |
       

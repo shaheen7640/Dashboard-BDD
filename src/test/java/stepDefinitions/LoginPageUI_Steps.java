@@ -1,7 +1,10 @@
 package stepDefinitions;
 
+import java.util.Properties;
+
 import org.junit.Assert;
 
+import com.dashboard.util.Configuration_Reader;
 import com.pages.LoginPage_UI;
 import com.qa.Factory.DriverFactory;
 
@@ -14,11 +17,26 @@ public class LoginPageUI_Steps {
 	private String loginPage_Title;
 	
 	private LoginPage_UI loginPageUI = new LoginPage_UI(DriverFactory.getDriver());
+	private Configuration_Reader reader;
+	Properties prop;
+	
 	
 	@Given("User is on login page")
 	public void user_is_on_login_page() {
 		
-		DriverFactory.getDriver().get("http://192.168.0.27:5000/");
+		reader = new Configuration_Reader();
+		prop = reader.init_Property();
+		
+		try {
+			DriverFactory.getDriver().get(prop.getProperty("url"));
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			System.out.println("---------------------------------------------------------------------------------------------------");
+			System.out.println("-/-Make sure you are connected with vpn/Site is down or change the driver manager version in POM-/-");
+			System.out.println("---------------------------------------------------------------------------------------------------");
+		}
+		
 	    
 	}
 	@When("Page is loaded")
